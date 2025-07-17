@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 const app = express()
 dotenv.config()
 app.use(cors())
+app.use(express.json());
 
 // Routes
 app.use('/api/persons',personRoutes);
