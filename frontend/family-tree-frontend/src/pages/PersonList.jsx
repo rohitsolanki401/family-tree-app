@@ -10,6 +10,7 @@ export default function PersonList() {
     async function fetchPersons() {
         try {
             const res= await getPersons();
+            console.log("Persons Data:", res.data);
             setPersons(res.data);
         } catch(err) {
             console.error(err);
@@ -22,7 +23,7 @@ export default function PersonList() {
         <div>
             <h2>Persons</h2>
             {persons.map((p) => {
-             <div key={p._id}>{p.name} - {p.gender} - {p.yearOfBirth}</div>
+             return <div key={p._id}>{p.name} - {p.gender} - {p.yearOfBirth}</div>
             })}
         </div>
     )

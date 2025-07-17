@@ -22,7 +22,7 @@ export default function RelationshipList() {
         <div>
             <h2>Relationships</h2>
             {relationships.map((rel) => {
-             <div key={rel._id}>{rel.person1?.name} - {rel.type} - {rel.person2?.name}</div>
+            return <div key={rel._id}>{rel.person1?.name} - {rel.type} - {rel.person2?.name}</div>
             })}
         </div>
     )
