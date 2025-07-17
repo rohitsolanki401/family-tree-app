@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/',createRelationship);
 router.get('/',getRelationships);
-router.put('/',updateRelationship);
-router.delete('/',deleteRelationship);
+router.put('/:id',updateRelationship);
+router.delete('/:id',deleteRelationship);
 
 export default router;
 

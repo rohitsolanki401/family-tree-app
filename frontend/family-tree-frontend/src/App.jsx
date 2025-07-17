@@ -5,6 +5,8 @@ import {BrowserRouter,Routes,Route,Link} from 'react-router-dom';
 import AddPersonForm from './pages/AddPersonForm.jsx';
 import AddRelationshipForm from './pages/AddRelationshipForm.jsx';
 import './App.css';
+import EditPersonForm from './pages/EditPersonForm.jsx';
+import EditRelationshipForm from './pages/EditRelationshipForm.jsx';
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
       <Route path='/relationships' element={<RelationshipList />} />
       <Route path='/add-person' element={<AddPersonForm />} />
       <Route path='/add-relationship' element={<AddRelationshipForm />} />
+      <Route path='/edit-person/:id' element={<EditPersonForm />} />
+      <Route path='/edit-relationship/:id' element={<EditRelationshipForm />} />
     </Routes>
     </BrowserRouter>
   )

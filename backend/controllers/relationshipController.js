@@ -22,18 +22,18 @@ export const getRelationships = async(req,res) => {
     }
 };
 
-// Update a person
+// Update a relationship
 export const updateRelationship = async(req,res) => {
     try{
         const {id} = req.params;
-        const UpdatedRelationship = await Relationship.findByIdAndUpdate(id,req.body,{ new: true });
-        res.json(UpdatedRelationship);
+        const updatedRelationship = await Relationship.findByIdAndUpdate(id,req.body,{ new: true });
+        res.json(updatedRelationship);
     } catch(error) {
                 res.status(500).json({error:error.message});
     }
 };
 
-// Delete a person
+// Delete a relationship
 export const deleteRelationship = async(req,res) => {
     try{
         const {id} = req.params;

@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { createRelationship } from '../services/relationshipService.js';
 import { getPersons } from '../services/personService.js';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddRelationshipForm() {
   const [persons, setPersons] = useState([]);
     const [person1, setPerson1] = useState("");
     const [person2, setPerson2] = useState("");
   const [type, setType] = useState('');
+  const navigate = useNavigate()
 
   useEffect(()=>{
    async function fetchPersons() {
@@ -22,6 +24,7 @@ function AddRelationshipForm() {
     try{
         await createRelationship({person1,person2,type})
         alert('Relationship added')
+        navigate('/relationships')
     } catch(err) {
         console.error(err);
     }

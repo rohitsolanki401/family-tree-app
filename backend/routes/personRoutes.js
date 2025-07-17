@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/',createPerson);
 router.get('/',getPersons);
-router.put('/',updatePerson);
-router.delete('/',deletePerson);
+router.put('/:id',updatePerson);
+router.delete('/:id',deletePerson);
 
 export default router;
 
