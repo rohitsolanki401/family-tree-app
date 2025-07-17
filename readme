@@ -1,0 +1,8 @@
+for runnnig backend - 
+cd backend 
+npm run dev
+
+for runnning frontend - 
+cd frontend
+cd family-tree-frontend
+npm run dev
