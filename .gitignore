@@ -1,0 +1,20 @@
+# Node dependencies
+backend/node_modules/
+frontend/family-tree-frontend/node_modules/
+
+# Build output
+backend/dist/
+frontend/family-tree-frontend/dist/
+
+# Environment variables
+backend/.env
+frontend/family-tree-frontend/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor files
+.vscode/
+.idea
+.DS_Store
