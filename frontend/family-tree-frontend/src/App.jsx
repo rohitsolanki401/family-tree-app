@@ -7,6 +7,7 @@ import AddRelationshipForm from './pages/AddRelationshipForm.jsx';
 import './App.css';
 import EditPersonForm from './pages/EditPersonForm.jsx';
 import EditRelationshipForm from './pages/EditRelationshipForm.jsx';
+import TreeView from './pages/TreeView.jsx';
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
       <Link to="/">Persons</Link> |
       <Link to="/relationships">Relationships</Link> |
       <Link to="/add-person">Add Person</Link> |
-      <Link to="/add-relationship">Add Relationships</Link>
+      <Link to="/add-relationship">Add Relationships</Link> | 
+      <Link to="/tree">Tree View</Link>
     </nav>
 
     <Routes>
@@ -25,7 +27,8 @@ const App = () => {
       <Route path='/add-relationship' element={<AddRelationshipForm />} />
       <Route path='/edit-person/:id' element={<EditPersonForm />} />
       <Route path='/edit-relationship/:id' element={<EditRelationshipForm />} />
-    </Routes>
+      <Route path='/tree' element={<TreeView />} />
+     </Routes>
     </BrowserRouter>
   )
 }
