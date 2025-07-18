@@ -5,14 +5,29 @@ import { getRelationships } from '../services/relationshipService';
 
 export default function TreeView() {
     const [treeData, setTreeData] = useState([]);
+    const[selectedPersonId, setSelectedPersonId] = useState('')
+    const[persons, setPersons] = useState([])
+    const[relationships,setRelationships] = useState([])
 
     useEffect(() => {
         async function fetchTreeData() {
             const personRes = await getPersons();
             const relationshipRes = await getRelationships();
 
-            const persons = personRes.data;
-            const relationships = relationshipRes.data;
+            setPersons(personRes.data);
+            setRelationships(relationshipRes.data);
+        }
+        fetchTreeData();
+    },[]);
+
+    useEffect(()=> {
+        if(selectedPersonId){
+            const formattedTree = buildTree(selectedPersonId)
+            setTreeData([formattedTree])
+        } else {
+            setTreeData([])
+        }
+    },[selectedPersonId,persons,relationships])
 
             const getPersonById = (id) => persons.find(p => p._id === id);
 
@@ -51,22 +66,33 @@ export default function TreeView() {
                 };
             }
 
-            // Hardcode root node
-            const sunil = persons.find(p => p.name.toLowerCase() === 'sunil');
-            if (!sunil) {
-                console.log('Sunil not found in person list');
-                return;
-            }
+    //         // Hardcode root node
+    //         const sunil = persons.find(p => p.name.toLowerCase() === 'sunil');
+    //         if (!sunil) {
+    //             console.log('Sunil not found in person list');
+    //             return;
+    //         }
 
-            const formattedTree = buildTree(sunil._id);
-            setTreeData([formattedTree]);
-        }
+    //         const formattedTree = buildTree(sunil._id);
+    //         setTreeData([formattedTree]);
+    //     }
 
-        fetchTreeData();
-    }, []);
+    
 
     return (
         <div style={{ width: '100%', height: '500px' }}>
+        <div>
+            <label>Select Root Person:</label>
+            <select
+            value={selectedPersonId}
+            onChange={(e) => setSelectedPersonId(e.target.value)}
+            >
+            <option value="">Select</option>
+            {persons.map(p => (
+                <option key={p._id} value={p._id}>{p.name}</option>
+            ))}
+            </select>
+        </div>
             {treeData.length > 0 && <Tree data={treeData} orientation="vertical" />}
         </div>
     );
